@@ -1,0 +1,68 @@
+digraph "ContextMapGraph" {
+graph ["imagepath"="C:\Users\Miguel\AppData\Local\Temp\GraphvizJava"]
+"BodegaManagement" ["margin"="0.3","orientation"="260","shape"="egg","fontsize"="16","style"="bold","label"="BodegaManagement\n","fontname"="sans-serif"]
+"BodegaTercerosService" ["margin"="0.3","orientation"="236","shape"="egg","fontsize"="16","style"="bold","label"="BodegaTercerosService\n","fontname"="sans-serif"]
+"CDManagement" ["margin"="0.3","orientation"="81","shape"="egg","fontsize"="16","style"="bold","label"="CDManagement\n","fontname"="sans-serif"]
+"EjecucionManagement" ["margin"="0.3","orientation"="234","shape"="egg","fontsize"="16","style"="bold","label"="EjecucionManagement\n","fontname"="sans-serif"]
+"FacilitacionService" ["margin"="0.3","orientation"="205","shape"="egg","fontsize"="16","style"="bold","label"="FacilitacionService\n","fontname"="sans-serif"]
+"InboundManagement" ["margin"="0.3","orientation"="336","shape"="egg","fontsize"="16","style"="bold","label"="InboundManagement\n","fontname"="sans-serif"]
+"InventarioService" ["margin"="0.3","orientation"="79","shape"="egg","fontsize"="16","style"="bold","label"="InventarioService\n","fontname"="sans-serif"]
+"OutboundManagement" ["margin"="0.3","orientation"="1","shape"="egg","fontsize"="16","style"="bold","label"="OutboundManagement\n","fontname"="sans-serif"]
+"OrdenCore" ["margin"="0.3","orientation"="188","shape"="egg","fontsize"="16","style"="bold","label"="OrdenCore\n","fontname"="sans-serif"]
+"PedidoCore" ["margin"="0.3","orientation"="304","shape"="egg","fontsize"="16","style"="bold","label"="PedidoCore\n","fontname"="sans-serif"]
+"EjecucionManagement" -> "CDManagement" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"EjecucionManagement" -> "BodegaTercerosService" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"EjecucionManagement" -> "BodegaManagement" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"FacilitacionService" -> "EjecucionManagement" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"InboundManagement" -> "InventarioService" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"InventarioService" -> "OutboundManagement" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"OutboundManagement" -> "FacilitacionService" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"OrdenCore" -> "InboundManagement" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"OrdenCore" -> "EjecucionManagement" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"PedidoCore" -> "EjecucionManagement" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"PedidoCore" -> "FacilitacionService" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>CF</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+}
