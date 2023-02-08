@@ -1,0 +1,154 @@
+ContextMap EntregaDeLosAlpes {
+	state = TO_BE
+	
+	///////////////////CadenaDeSuministroDomain////////////////////
+	contains OrdenCore, InventarioService
+	contains InboundManagement, OutboundManagement, BodegaManagement, BodegaTercerosService
+	
+	///////////////////LogisticaDomain////////////////////
+	contains PedidoCore, FacilitacionService
+	contains EjecucionManagement, CDManagement
+
+	///////////////////CadenaDeSuministroDomain////////////////////
+
+	OrdenCore [OHS, PL]-> InboundManagement {
+	}
+
+	OrdenCore [OHS, PL]-> [ACL] EjecucionManagement {
+	}
+	
+	InboundManagement -> InventarioService {
+	}
+
+	InventarioService -> OutboundManagement {
+	}
+	
+	///////////////////LogisticaDomain////////////////////
+	
+	PedidoCore [OHS, PL]->[CF] FacilitacionService {
+	}
+
+	PedidoCore [OHS, PL]->[ACL] EjecucionManagement {
+	}
+	
+	OutboundManagement -> FacilitacionService {
+	}
+	
+	FacilitacionService -> EjecucionManagement {
+	}
+
+	EjecucionManagement -> CDManagement {
+	}
+	
+	EjecucionManagement -> BodegaManagement {
+	}
+	
+	EjecucionManagement -> BodegaTercerosService{
+	}
+}
+
+BoundedContext OutboundManagement implements OutboundManagement {
+	domainVisionStatement "Este Bounded Context gestiona los servicios de salida para el empaquetamiento de 
+                           los items en los centros de distribución, así como de la coordinación
+                           e integración con los servicios de transporte por parte del equipo de logística de distribución de salida."
+}
+
+BoundedContext InboundManagement implements InboundManagement {
+	domainVisionStatement "Este Bounded Context gestiona los servicios de entrada, se debe
+						   corroborar la disponibilidad de los productos en las bodegas."
+}
+
+BoundedContext InventarioService implements InventarioService {
+	domainVisionStatement "Este Bounded Context administra el inventario en bodegas y en centros de distribucion."
+}
+
+BoundedContext OrdenCore implements OrdenManagement {
+	domainVisionStatement "Este Bounded Context es el encargado de manejar toda la logica asociada a las ordenes."
+}
+
+BoundedContext PedidoCore implements PedidoManagement {
+	domainVisionStatement "Este Bounded Context es el encargado de manejar toda la logica asociada a los pedidos."
+}
+
+BoundedContext FacilitacionService implements FacilitacionService {
+	domainVisionStatement "Este Bounded Context es el encargado de consolidar todos los tipos de bienes en un único centro de distribución, 
+						   en caso de que los productos solicitados por el cliente no se encuentren en una bodega."
+}
+
+BoundedContext EjecucionManagement implements EjecucionManagement {
+	domainVisionStatement "Este Bounded Context se encarga de iniciar con el proceso de planificación y despacho de pedidos."
+}
+
+BoundedContext CDManagement implements CDManagement {
+	domainVisionStatement "Este Bounded Context se encarga de gestionar los bienes adquiridos en un pedido."
+}
+
+BoundedContext BodegaManagement implements BodegaManagement {
+	domainVisionStatement "Este Bounded Context se encarga de gestionar los bienes adquiridos en una orden."
+}
+
+BoundedContext BodegaTercerosService implements BodegaTercerosService {
+	domainVisionStatement "Este Bounded Context se encarga de gestionar los bienes adquiridos en una orden."
+}
+
+Domain CadenaDeSuministroDomain {
+	domainVisionStatement = "Se encarga de proveer los elementos necesarios para completar una orden, entregando bienes alrededor de todo el paÃ­s."
+	Subdomain OrdenManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio es el encargado de manejar toda la logica asociada a las ordenes."
+	}
+	
+	Subdomain InventarioService {
+		type SUPPORTING_DOMAIN
+		domainVisionStatement "Este subdominio administra el inventario en bodegas y en centros de distribucion."
+	}
+	
+	Subdomain InboundManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio gestiona los servicios de entrada, se debe
+						   corroborar la disponibilidad de los productos en las bodegas."
+	}
+	
+	Subdomain OutboundManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio se encarga de gestionar los servicios de salida para el empaquetamiento de 
+                           los items en los centros de distribución, así como de la coordinación
+                           e integración con los servicios de transporte por parte del equipo de logística de distribución de salida."
+	}
+	
+	Subdomain CDManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio se encarga de gestionar los bienes adquiridos en un pedido."
+	}
+	
+	Subdomain BodegaManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio se encarga de gestionar los bienes adquiridos en una orden"
+	}
+	
+	Subdomain BodegaTercerosService {
+		type GENERIC_SUBDOMAIN
+		domainVisionStatement "Este subdominio se encarga de gestionar los bienes adquiridos en una orden por medio de un tercero"
+	}
+	
+}
+
+Domain LogisticaDomain {
+	domainVisionStatement = "Se encarga de organizar e implementar la operaciÃ³n para una rÃ¡pida y eficiente entrega de los bienes en todo el paÃ­s"
+	Subdomain PedidoManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio es el encargado de manejar toda la logica asociada a los pedidos."
+	}
+	
+	Subdomain FacilitacionService {
+		type SUPPORTING_DOMAIN
+		domainVisionStatement "Este subdominio es el encargado de consolidar todos los tipos de bienes en un único centro de distribución, 
+						   en caso de que los productos solicitados por el cliente no se encuentren en una bodega."
+	}
+	
+	Subdomain EjecucionManagement {
+		type CORE_DOMAIN
+		domainVisionStatement "Este subdominio se encarga de iniciar con el proceso de planificación y despacho de pedidos."
+	}
+	
+}
